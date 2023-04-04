@@ -7,7 +7,205 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navBar{
+  border-bottom: 10px solid #FBD16D;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.card{
+  margin: 0;
+}
+
+.cardPerfumes{
+  background-color: white;
+  width: auto;
+  margin: 16px;
+  box-shadow: 4px 4px 10px 2px rgb(221, 221, 221);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.cardBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cardTexto{
+  height: 50px !important;
+}
+
+.imgPerfumes{
+  display: flex;
+  justify-content: center;
+}
+
+.barra{
+  background-color: #ebebeb;
+
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input{
+  width: 650px;
+  border-radius: 50px;
+  border: 1px solid gainsboro;
+  padding: 8px;
+  margin: 16px;
+}
+
+.envioGratis{
+  background-color: #212529;
+  color: white;
+
+}
+
+.envioGratis p{
+  padding: 12px;
+  margin: 0;
+}
+
+.logo{
+  width: 260px;
+}
+
+
+.lst, .lstNav{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.lstNav{
+  margin-inline: 16px;
+}
+
+.listNav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn2{
+  padding: 0;
+  margin: 0;
+  width: 28px;
+  height: 28;
+  border: 0;
+}
+
+.tituloProducto{
+  font-size: 48px;
+}
+
+.footer{
+  background-color: #212529;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-end;
+    height: 200px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.cardRow{
+  margin-inline: 4% !important;
+}
+
+@media (min-width: 1400px) {
+  .cardRow{
+    margin-inline: 20% !important;
+  }
+
+  .regRow{
+    padding-inline: 300px;
+  }
+}
+
+.precios{
+  color: red;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.iconoCarrito{
+  font-size: 22px;
+  padding: 0px;
+  color: #ffae00;
+}
+
+.carritoPrecio{
+  display: flex;
+  align-items: center;
+}
+
+.favCorazon{
+  font-size: 26px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.boxForm{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-inline: 460px;
+  border: 1px solid gainsboro;
+  padding: 40px;
+}
+
+.post{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b1b1b1;
+}
+
+.n1{
+  font-size: 34px;
+  padding: 0px;
+  margin: 0;
+  font-weight: 900;
+}
+
+.postPerfume{
+  width: 380px;
+}
+
+.n2{
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
