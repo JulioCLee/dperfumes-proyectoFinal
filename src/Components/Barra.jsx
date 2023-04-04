@@ -2,23 +2,46 @@ import React, { useContext } from 'react'
 import { Nav, Dropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png'
-
+import { useNavigate } from 'react-router-dom';
 import { TfiSearch } from 'react-icons/tfi';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import MyContext from '../Contexts/MyContext';
 
 
-const Barra = () => {
+const Barra = ({perfume}) => {
 
     const { perfumes } = useContext(MyContext);
 
-    const marcasPerfumes = perfumes.map((p) => {
+    const marcasPerfumes = perfumes.map((p,i) => {
         return p.MARCA;
     })
-
+    const tipoPerfumes = perfumes.map((p,i) => {
+        return p.TIPO;
+    })
+    const generoPerfumes = perfumes.map((p,i) => {
+        return p.GENERO;
+    })
+    //marcas//
     const marcas = new Set(marcasPerfumes);
 
     const marcasUnicas = [...marcas];
+
+    //tipo //
+    const tipo = new Set(tipoPerfumes);
+
+    const tipoUnicas = [...tipo];
+
+    // genero //
+    const genero = new Set(generoPerfumes);
+
+    const generoUnicas = [...genero];
+
+
+    const navigate = useNavigate();
+
+    const detallePerfume = (sku) => {
+        navigate(`/detalle/${sku}`);
+    }
 
 
     return (
@@ -42,23 +65,45 @@ const Barra = () => {
                 </div>
             </div>
             <div>
-                <ul className='m-0 pb-3 listNav'>
+                <ul className='m-0 pb-3 listNav'  >
                     <NavLink to="/" className='lstNav' >Home</NavLink>
                     <NavLink to="/productos" className='lstNav' >Perfumes</NavLink>
-                    <Dropdown className='lstNav'>
+                    <Dropdown className='lstNav'  >
                         <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
                             Marcas
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                marcasUnicas.map((p,i) => {
+                                marcasUnicas.map((p) => {
+                                    return <Dropdown.Item href=""  >{p} </Dropdown.Item>
+                                })
+                            }
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown className='lstNav'>
+                        <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
+                            Tipo
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {
+                                tipoUnicas.map((p, i) => {
                                     return <Dropdown.Item href="" key={i}>{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
                     </Dropdown>
-                    <NavLink to="/" className='lstNav' >Tipo</NavLink>
-                    <NavLink to="/" className='lstNav' >Genero</NavLink>
+                    <Dropdown className='lstNav'>
+                        <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
+                            Genero
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {
+                                generoUnicas.map((p, i) => {
+                                    return <Dropdown.Item href="" key={i}>{p}</Dropdown.Item>
+                                })
+                            }
+                        </Dropdown.Menu>
+                    </Dropdown>
                     <NavLink to="/" className='lstNav' >Favoritos</NavLink>
                 </ul>
             </div>

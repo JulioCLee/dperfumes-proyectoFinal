@@ -99,11 +99,11 @@ code {
 .lst, .lstNav{
   color: rgb(0, 0, 0);
   text-decoration: none;
-  margin-left: 4px;
+  margin-left: 6px;
 }
 
 .lstNav{
-  margin-inline: 16px;
+  margin-inline: 24px;
 }
 
 .listNav{
