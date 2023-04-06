@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import MyContext from '../Contexts/MyContext';
 import CardPerfumes from './CardPerfumes';
-import Carousel from 'react-bootstrap/Carousel';
 
 
 const Galeria = () => {
@@ -13,12 +12,14 @@ const Galeria = () => {
         return perfumes.slice(0, 16);
     }
 
+
     return (
         <div className='main'>
             <p className='tituloProducto'>Productos Destacados</p>           
             <Row xl={4} className="cardRow" >
                 {
-                    pagination().map((perfume) => {
+                    pagination()
+                    .map((perfume) => {
                         return <Col className='p-0 m-0' key={perfume.SKU}>
                             <CardPerfumes perfume={perfume}></CardPerfumes>
                         </Col>

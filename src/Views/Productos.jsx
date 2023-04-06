@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../Components/Footer'
 import Galeria from '../Components/Galeria'
 
 const Productos = () => {

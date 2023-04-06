@@ -1,24 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext , useState } from 'react'
 import { Nav, Dropdown, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png'
-import { useNavigate } from 'react-router-dom';
 import { TfiSearch } from 'react-icons/tfi';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import MyContext from '../Contexts/MyContext';
 
 
-const Barra = ({perfume}) => {
+const Barra = () => {
+
+    const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
 
     const { perfumes } = useContext(MyContext);
 
-    const marcasPerfumes = perfumes.map((p,i) => {
+    const marcasPerfumes = perfumes.map((p) => {
         return p.MARCA;
     })
-    const tipoPerfumes = perfumes.map((p,i) => {
+    const tipoPerfumes = perfumes.map((p) => {
         return p.TIPO;
     })
-    const generoPerfumes = perfumes.map((p,i) => {
+    const generoPerfumes = perfumes.map((p) => {
         return p.GENERO;
     })
     //marcas//
@@ -37,57 +38,51 @@ const Barra = ({perfume}) => {
     const generoUnicas = [...genero];
 
 
-    const navigate = useNavigate();
-
-    const detallePerfume = (sku) => {
-        navigate(`/detalle/${sku}`);
-    }
-
-
     return (
         <div className='barra'>
             <div className='envioGratis'>
                 <p>Envio Gratis por la compra sobre $39.990</p>
             </div>
             <div className='header'>
-                <NavLink to="/"><img src={logo} alt="logo" className='logo'></img></NavLink>
+                <NavLink to="/"><img src={logo} alt="logo" className='logo'  ></img></NavLink>
                 <input className='input' type="text" placeholder='Buscar productos' />
                 <Button variant="link" ><TfiSearch className='fs-4 me-5' style={{ color: "black" }} ></TfiSearch></Button>
                 <div>
-                    <Nav className='prueba'>
-                        <NavLink className='lst'
-                            to="/registro">Registro /</NavLink>
-                        <NavLink className='lst'
+                    <Nav>
+                        <NavLink className={setActiveClass}
+                            to="/registro">Registro </NavLink>
+                        <NavLink className={setActiveClass}
                             to="/sesion">Iniciar sesión</NavLink>
-                        <NavLink className='lst'
-                            to="/carrito"><RiShoppingCartLine className='fs-5 ms-3'></RiShoppingCartLine></NavLink>
+                        <NavLink className="lst"
+                            to="/carrito"><RiShoppingCartLine className='fs-5 ms-2'></RiShoppingCartLine></NavLink>
                     </Nav>
                 </div>
             </div>
             <div>
-                <ul className='m-0 pb-3 listNav'  >
-                    <NavLink to="/" className='lstNav' >Home</NavLink>
-                    <NavLink to="/productos" className='lstNav' >Perfumes</NavLink>
-                    <Dropdown className='lstNav'  >
+                <ul className='m-0 pb-3 listNav'>
+                    <li><NavLink to="/" className={setActiveClass}>Home</NavLink></li>
+                    <li><NavLink to="/productos" className={setActiveClass}>Perfumes</NavLink></li>
+                    <li><NavLink to="/favoritos" className={setActiveClass}>Favoritos</NavLink></li>
+                    <Dropdown  >
                         <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
                             Marcas
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
                                 marcasUnicas.map((p) => {
-                                    return <Dropdown.Item href=""  >{p} </Dropdown.Item>
+                                    return <Dropdown.Item key={p} >{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown className='lstNav'>
+                    <Dropdown>
                         <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
                             Tipo
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                tipoUnicas.map((p, i) => {
-                                    return <Dropdown.Item href="" key={i}>{p}</Dropdown.Item>
+                                tipoUnicas.map((p) => {
+                                    return <Dropdown.Item href="">{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
@@ -98,13 +93,12 @@ const Barra = ({perfume}) => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                generoUnicas.map((p, i) => {
-                                    return <Dropdown.Item href="" key={i}>{p}</Dropdown.Item>
+                                generoUnicas.map((p) => {
+                                    return <Dropdown.Item href="">{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
                     </Dropdown>
-                    <NavLink to="/" className='lstNav' >Favoritos</NavLink>
                 </ul>
             </div>
         </div>
