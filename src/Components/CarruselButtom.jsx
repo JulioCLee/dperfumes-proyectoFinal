@@ -41,7 +41,7 @@ const CarruselButtom = () => {
       {
         images.map((image)=> (
           <img
-          style={{margin:"16px", overflow:"auto"}}  
+          style={{margin:"16px", overflow:"auto", width:'100px'}}  
           src={image.url}
           alt={image.title} />
         ))  
