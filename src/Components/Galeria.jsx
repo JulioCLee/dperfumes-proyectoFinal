@@ -3,7 +3,6 @@ import { Col, Row } from 'react-bootstrap';
 import MyContext from '../Contexts/MyContext';
 import CardPerfumes from './CardPerfumes';
 
-
 const Galeria = () => {
 
     const { perfumes } = useContext(MyContext);
@@ -11,7 +10,6 @@ const Galeria = () => {
     const pagination = () => {
         return perfumes.slice(0, 16);
     }
-
 
     return (
         <div className='main'>
