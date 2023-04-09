@@ -4,7 +4,7 @@ import MyContext from '../Contexts/MyContext';
 import CardPerfumes from './CardPerfumes';
 
 
-const Galeria = () => {
+const Galeria = ({ fav = false }) => {
 
     const { perfumes } = useContext(MyContext);
 
@@ -15,11 +15,15 @@ const Galeria = () => {
 
     return (
         <div className='main'>
-            <p className='tituloProducto'>Productos Destacados</p>           
-            <Row xl={4} className="cardRow" >
+            <Row className="cardRow" >
                 {
-                    pagination()
-                    .map((perfume) => {
+                    pagination().filter((perfume) => {
+                        if (fav) {
+                            return perfume.liked ? perfume : null;
+                        } else {
+                            return perfume;
+                        }
+                    }).map((perfume) => {
                         return <Col className='p-0 m-0' key={perfume.SKU}>
                             <CardPerfumes perfume={perfume}></CardPerfumes>
                         </Col>

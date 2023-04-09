@@ -12,10 +12,12 @@ import Registro from './Views/Registro';
 import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
 import NavBarra from './Components/NavBarra';
+import Favoritos from './Views/Favoritos';
 
 function App() {
 
   const [perfumes, setPerfumes] = useState([]);
+  const estadoGlobal = {perfumes, setPerfumes};
 
 
 
@@ -33,7 +35,7 @@ function App() {
 
 
   return (
-    <MyContext.Provider value={{ perfumes }}>
+    <MyContext.Provider value={estadoGlobal}>
       <BrowserRouter >
         <NavBarra></NavBarra>
         <Barra></Barra>
@@ -44,6 +46,7 @@ function App() {
           <Route path="/productos" element={<Productos></Productos>}></Route>
           <Route path="/registro" element={<Registro></Registro>}></Route>
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
+          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
         </Routes>
       </BrowserRouter>
         <Footer></Footer>

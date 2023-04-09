@@ -52,8 +52,8 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                marcasUnicas.map((p) => {
-                                    return <Dropdown.Item key={p} >{p}</Dropdown.Item>
+                                marcasUnicas.map((p,k) => {
+                                    return <Dropdown.Item key={k} >{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
@@ -64,8 +64,8 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                tipoUnicas.map((p) => {
-                                    return <Dropdown.Item href="">{p}</Dropdown.Item>
+                                tipoUnicas.map((p,c) => {
+                                    return <Dropdown.Item key={c} href="">{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
@@ -76,8 +76,8 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                generoUnicas.map((p) => {
-                                    return <Dropdown.Item href="">{p}</Dropdown.Item>
+                                generoUnicas.map((p,a) => {
+                                    return <Dropdown.Item key={a} href="">{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
