@@ -40,24 +40,7 @@ const Barra = () => {
 
     return (
         <div className='barra'>
-            <div className='envioGratis'>
-                <p>Envio Gratis por la compra sobre $39.990</p>
-            </div>
-            <div className='header'>
-                <NavLink to="/"><img src={logo} alt="logo" className='logo'  ></img></NavLink>
-                <input className='input' type="text" placeholder='Buscar productos' />
-                <Button variant="link" ><TfiSearch className='fs-4 me-5' style={{ color: "black" }} ></TfiSearch></Button>
-                <div>
-                    <Nav>
-                        <NavLink className={setActiveClass}
-                            to="/registro">Registro </NavLink>
-                        <NavLink className={setActiveClass}
-                            to="/sesion">Iniciar sesión</NavLink>
-                        <NavLink className="lst"
-                            to="/carrito"><RiShoppingCartLine className='fs-5 ms-2'></RiShoppingCartLine></NavLink>
-                    </Nav>
-                </div>
-            </div>
+           
             <div>
                 <ul className='m-0 pb-3 listNav'>
                     <li><NavLink to="/" className={setActiveClass}>Home</NavLink></li>

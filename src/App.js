@@ -11,6 +11,7 @@ import MyContext from './Contexts/MyContext';
 import Registro from './Views/Registro';
 import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
+import NavBarra from './Components/NavBarra';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
   return (
     <MyContext.Provider value={{ perfumes }}>
       <BrowserRouter >
+        <NavBarra></NavBarra>
         <Barra></Barra>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>

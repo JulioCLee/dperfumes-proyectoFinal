@@ -3,8 +3,8 @@ import Galeria from '../Components/Galeria'
 
 const Productos = () => {
   return (
-    <div> 
-        <Galeria></Galeria>
+    <div>
+      <Galeria></Galeria>
     </div>
   )
 }
