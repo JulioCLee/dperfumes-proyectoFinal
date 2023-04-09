@@ -19,10 +19,19 @@ function App() {
   const [perfumes, setPerfumes] = useState([]);
   const estadoGlobal = {perfumes, setPerfumes};
 
-
+  const usuarios = [
+    {
+      email: 'admin@gmail.com',
+      clave: 123456789,
+    },
+    {
+      email: 'invitado@gmail.com',
+      clave: 789456123,
+    }
+  ]
 
   const getPerfumes = async () => {
-    const res = await fetch(window.location.origin+`/perfumes.json`);
+    const res = await fetch(window.location.origin + `/perfumes.json`);
     const data = await res.json();
 
     setPerfumes(data)
@@ -49,7 +58,7 @@ function App() {
           <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
         </Routes>
       </BrowserRouter>
-        <Footer></Footer>
+      <Footer></Footer>
     </MyContext.Provider>
   );
 }

@@ -1,9 +1,7 @@
-import React, { useContext , useState } from 'react'
-import { Nav, Dropdown, Button } from 'react-bootstrap';
+import React, { useContext } from 'react'
+import { Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/img/logo.png'
-import { TfiSearch } from 'react-icons/tfi';
-import { RiShoppingCartLine } from 'react-icons/ri';
+
 import MyContext from '../Contexts/MyContext';
 
 

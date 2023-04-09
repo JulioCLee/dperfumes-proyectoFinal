@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from '../Components/Footer'
+import CarruselButtom from '../Components/CarruselButtom'
 import Galeria from '../Components/Galeria'
 import Header from '../Components/Header'
 import Post from '../Components/Post'
@@ -10,6 +10,7 @@ const Home = () => {
         <Header></Header>
         <Galeria></Galeria>
         <Post></Post>
+        <CarruselButtom></CarruselButtom>
     </div>
   )
 }
