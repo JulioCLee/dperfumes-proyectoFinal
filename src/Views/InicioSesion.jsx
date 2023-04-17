@@ -1,20 +1,24 @@
 import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 import MyContext from '../Contexts/MyContext';
 
 const InicioSesion = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { usuarios } = useContext(MyContext);
+    const { usuarios, setConectado } = useContext(MyContext);
+    const navigate = useNavigate();
 
     const validarEmail = () => {
        const usuarioValido =  usuarios.find((usuario) => usuario.email === email && usuario.clave === password);
 
         if(usuarioValido){
-            alert('Usuario Valido');
+            setConectado({estado: true, correo: usuarioValido.email, nombre: usuarioValido.nombre });
+            navigate(`/`)
         }else{
+            setConectado(false);
             alert("usuario no valido");
         }
     }

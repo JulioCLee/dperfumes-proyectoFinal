@@ -13,22 +13,22 @@ import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
 import NavBarra from './Components/NavBarra';
 import Favoritos from './Views/Favoritos';
+import Perfil from './Views/Perfil';
 
 function App() {
 
   const [perfumes, setPerfumes] = useState([]);
-  const estadoGlobal = {perfumes, setPerfumes};
+  const [usuarios, setUsuarios] = useState("");
+  const [conectado, setConectado] = useState({});
+  const estadoGlobal = {perfumes, setPerfumes, usuarios, setConectado, conectado};
 
-  const usuarios = [
-    {
-      email: 'admin@gmail.com',
-      clave: 123456789,
-    },
-    {
-      email: 'invitado@gmail.com',
-      clave: 789456123,
-    }
-  ]
+  const getUsuarios = async () =>{
+    const res = await fetch(window.location.origin + `/usuarios.json`)
+    const data = await res.json();
+
+    setUsuarios(data)
+
+  }
 
   const getPerfumes = async () => {
     const res = await fetch(window.location.origin + `/perfumes.json`);
@@ -40,6 +40,7 @@ function App() {
 
   useEffect(() => {
     getPerfumes();
+    getUsuarios();
   }, [])
 
 
@@ -56,6 +57,8 @@ function App() {
           <Route path="/registro" element={<Registro></Registro>}></Route>
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
           <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
+          <Route path="/perfil" element={<Perfil></Perfil>}></Route>
+
         </Routes>
       </BrowserRouter>
       <Footer></Footer>

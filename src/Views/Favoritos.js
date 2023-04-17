@@ -1,4 +1,6 @@
+import CardPerfumes from "../Components/CardPerfumes";
 import Galeria from "../Components/Galeria";
+import Home from "./Home";
 
 export default function Favoritos() {
 

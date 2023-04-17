@@ -1,0 +1,12 @@
+[
+    {
+      "nombre": "Julio",
+      "email": "admin@gmail.com",
+      "clave": "123456789"
+    },
+    {
+      "nombre": "Invitado",
+      "email": "invitado@gmail.com",
+      "clave": "789456123"
+    }
+  ]
