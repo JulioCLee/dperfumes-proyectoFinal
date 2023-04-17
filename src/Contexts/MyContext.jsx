@@ -1,5 +1,23 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const MyContext = createContext();
+const AppContext = createContext();
 
-export default MyContext;
+const AppProvider = ({ children }) => {
+    const [store, setStore] = useState({
+      productos: [],
+      sortCritieria: [],
+      searchTerms: "",
+    });
+  
+    return (
+      <AppContext.Provider value={{ store, setStore }}>
+        {children}
+      </AppContext.Provider>
+    );
+  };
+  
+  export const useStore = () => {
+    return useContext(AppContext);
+  };
+  
+  export default AppProvider;

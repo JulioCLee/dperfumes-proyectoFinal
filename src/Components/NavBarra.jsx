@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png'
@@ -7,6 +7,13 @@ import { RiShoppingCartLine } from 'react-icons/ri';
 
 const NavBarra = () => {
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
+    const [search, setSearch] = useState("");
+
+    const searches = (e) => {
+        let a = e.target.value;
+        console.log(a);
+    }
+
     return (
         <div className='barra'>
             <div className='envioGratis'>
@@ -14,7 +21,7 @@ const NavBarra = () => {
             </div>
             <div className='header'>
                 <NavLink to="/"><img src={logo} alt="logo" className='logo'  ></img></NavLink>
-                <input className='input' type="text" placeholder='Buscar productos' />
+                <input className='input' type="text" placeholder='Buscar productos' value={search} onChange={searches} />
                 <Button variant="link" ><TfiSearch className='fs-4 me-5' style={{ color: "black" }} ></TfiSearch></Button>
                 <div>
                     <Nav>
@@ -28,7 +35,7 @@ const NavBarra = () => {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default NavBarra
