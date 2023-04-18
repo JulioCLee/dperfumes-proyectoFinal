@@ -6,8 +6,7 @@ import Carrito from './Views/Carrito';
 import Detalle from './Views/Detalle';
 import Barra from './Components/Barra';
 import Productos from './Views/Productos';
-import { useEffect, useState } from 'react';
-import MyContext from './Contexts/MyContext';
+import { useState } from 'react';
 import Registro from './Views/Registro';
 import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
@@ -17,36 +16,17 @@ import AppProvider from './Contexts/MyContext';
 import Perfil from './Views/Perfil';
 
 function App() {
-
-  const [perfumes, setPerfumes] = useState([]);
-  const [usuarios, setUsuarios] = useState("");
-  const [conectado, setConectado] = useState({});
-  const estadoGlobal = {perfumes, setPerfumes, usuarios, setConectado, conectado};
-
-  const getUsuarios = async () =>{
-    const res = await fetch(window.location.origin + `/usuarios.json`)
-    const data = await res.json();
-
-    setUsuarios(data)
-
-  }
-
-  const getPerfumes = async () => {
-    const res = await fetch(window.location.origin + `/perfumes.json`);
-    const data = await res.json();
-
-    setPerfumes(data)
-
-  }
-
-  useEffect(() => {
-    getPerfumes();
-    getUsuarios();
-  }, [])
-
+  const [storeGlobal, setStoreGlobal] = useState({
+    perfumes: [], 
+    sortCritieria: [],
+    searchTerms: "",
+    usuarios: [],
+    conectado: null,
+    cart: [],
+  });
 
   return (
-    <AppProvider data={"asd"}>
+    <AppProvider storeGlobal={storeGlobal}>
       <BrowserRouter>
         <NavBarra></NavBarra>
         <Barra></Barra>

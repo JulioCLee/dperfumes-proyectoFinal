@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import MyContext from '../Contexts/MyContext'
+import MyContext, { useStore } from '../Contexts/MyContext'
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
@@ -8,9 +8,10 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 
 
 const Detalle = () => {
-
-    const { perfumes } = useContext(MyContext);
-    const { SKU } = useParams();
+    const { store } = useStore()
+    const { perfumes } = store;
+/*     const { perfumes } = useContext(MyContext);
+ */    const { SKU } = useParams();
 
     const perfume = perfumes.find((p) => p.SKU === SKU);
 
@@ -34,10 +35,10 @@ const Detalle = () => {
                     <span>Descripcion:</span>
                     <p className='desc'>{perfume.DESC}</p>
                 </div>
-               
+
                 <div className='footerDetalle'>
                     <Button variant="dark">Añadir al carrito</Button>
-                    <NavLink to="/productos" style={{ textDecoration: "none", color: "black",  }}> <BsArrowLeftShort></BsArrowLeftShort> Continuar Comprando</NavLink>
+                    <NavLink to="/productos" style={{ textDecoration: "none", color: "black", }}> <BsArrowLeftShort></BsArrowLeftShort> Continuar Comprando</NavLink>
                 </div>
             </div>
         </div>
