@@ -1,15 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-import MyContext from '../Contexts/MyContext';
+import { useStore } from '../Contexts/MyContext';
 
 
 const Barra = () => {
 
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
-
-    const { perfumes } = useContext(MyContext);
+    const { store: { perfumes } } = useStore()
+    /* const { perfumes } = useContext(MyContext); */
 
     const marcasPerfumes = perfumes.map((p) => {
         return p.MARCA;
@@ -38,7 +38,7 @@ const Barra = () => {
 
     return (
         <div className='barra'>
-           
+
             <div>
                 <ul className='m-0 pb-3 listNav'>
                     <li><NavLink to="/" className={setActiveClass}>Home</NavLink></li>
@@ -50,7 +50,7 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                marcasUnicas.map((p,k) => {
+                                marcasUnicas.map((p, k) => {
                                     return <Dropdown.Item key={k} >{p}</Dropdown.Item>
                                 })
                             }
@@ -62,7 +62,7 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                tipoUnicas.map((p,c) => {
+                                tipoUnicas.map((p, c) => {
                                     return <Dropdown.Item key={c} href="">{p}</Dropdown.Item>
                                 })
                             }
@@ -74,7 +74,7 @@ const Barra = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {
-                                generoUnicas.map((p,a) => {
+                                generoUnicas.map((p, a) => {
                                     return <Dropdown.Item key={a} href="">{p}</Dropdown.Item>
                                 })
                             }

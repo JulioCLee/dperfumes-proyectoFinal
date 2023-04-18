@@ -1,29 +1,31 @@
 import React, { useState } from 'react'
-import { useContext } from 'react';
 import { Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png'
 import { TfiSearch } from 'react-icons/tfi';
 import { RiShoppingCartLine } from 'react-icons/ri';
-import MyContext from '../Contexts/MyContext';
+import { useStore } from '../Contexts/MyContext';
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const NavBarra = () => {
+    const { store, setStore } = useStore();
+    const { conectado, searchTerms } = store;
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
-    const [search, setSearch] = useState("");
 
-    const searches = (e) => {
+
+    const handleSearch = (e) => {
         let a = e.target.value;
-        console.log(a);
+        setStore({ ...store, searchTerms: a })
     }
 
-    const { conectado, setConectado } = useContext(MyContext);
+
+    /* const { conectado, setConectado } = useContext(MyContext); */
     const navigate = useNavigate();
 
 
-    const cerrarApp = () =>{
-        setConectado(false)
+    const cerrarApp = () => {
+        setStore({ ...store, conectado: false })
         navigate(`/`)
     }
 
@@ -35,11 +37,10 @@ const NavBarra = () => {
             </div>
             <div className='header'>
                 <NavLink to="/"><img src={logo} alt="logo" className='logo'  ></img></NavLink>
-                <input className='input' type="text" placeholder='Buscar productos' value={search} onChange={searches} />
-                <Button variant="link" ><TfiSearch className='fs-4 me-5' style={{ color: "black" }} ></TfiSearch></Button>
+                <input className='input' type="text" placeholder='Buscar productos' value={searchTerms} onChange={handleSearch} />
                 <div>
                     {
-                        conectado.estado ?
+                        conectado !== null && conectado.estado ?
                             <Dropdown  >
                                 <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
                                     <span>Hola, </span>

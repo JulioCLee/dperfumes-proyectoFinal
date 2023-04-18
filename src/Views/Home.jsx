@@ -1,10 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import CarruselButtom from '../Components/CarruselButtom'
 import Header from '../Components/Header'
-import Post from '../Components/Post'
-import { Col, Row } from 'react-bootstrap';
-import MyContext from '../Contexts/MyContext';
-import CardPerfumes from '../Components/CardPerfumes'
+import Post from '../Components/Post';
 import Galeria from '../Components/Galeria';
 
 const Home = () => {

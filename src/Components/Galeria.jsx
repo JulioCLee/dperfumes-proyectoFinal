@@ -1,12 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Col, Row } from 'react-bootstrap';
-import MyContext from '../Contexts/MyContext';
+import  { useStore } from '../Contexts/MyContext';
 import CardPerfumes from './CardPerfumes';
 
 const Galeria = ({ fav = false }) => {
-
-    const { perfumes } = useContext(MyContext);
-
+    const { store } = useStore()
+    const { perfumes, searchTerms } = store
+    console.log(searchTerms);
+    /*     const { perfumes } = useContext(MyContext);
+     */
     const pagination = () => {
         return perfumes.slice(0, 16);
     }
@@ -21,6 +23,8 @@ const Galeria = ({ fav = false }) => {
                         } else {
                             return perfume;
                         }
+                    }).filter((perfume) => {
+                        return perfume && perfume.TITULO.toLowerCase().includes(searchTerms.toLowerCase())
                     }).map((perfume) => {
                         return <Col className='p-0 m-0' key={perfume.SKU}>
                             <CardPerfumes perfume={perfume}></CardPerfumes>
