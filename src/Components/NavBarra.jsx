@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { useContext } from 'react';
 import { Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +11,13 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBarra = () => {
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
+    const [search, setSearch] = useState("");
+
+    const searches = (e) => {
+        let a = e.target.value;
+        console.log(a);
+    }
+
     const { conectado, setConectado } = useContext(MyContext);
     const navigate = useNavigate();
 
@@ -27,7 +35,7 @@ const NavBarra = () => {
             </div>
             <div className='header'>
                 <NavLink to="/"><img src={logo} alt="logo" className='logo'  ></img></NavLink>
-                <input className='input' type="text" placeholder='Buscar productos' />
+                <input className='input' type="text" placeholder='Buscar productos' value={search} onChange={searches} />
                 <Button variant="link" ><TfiSearch className='fs-4 me-5' style={{ color: "black" }} ></TfiSearch></Button>
                 <div>
                     {

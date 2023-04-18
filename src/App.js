@@ -13,6 +13,7 @@ import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
 import NavBarra from './Components/NavBarra';
 import Favoritos from './Views/Favoritos';
+import AppProvider from './Contexts/MyContext';
 import Perfil from './Views/Perfil';
 
 function App() {
@@ -45,8 +46,8 @@ function App() {
 
 
   return (
-    <MyContext.Provider value={estadoGlobal}>
-      <BrowserRouter >
+    <AppProvider data={"asd"}>
+      <BrowserRouter>
         <NavBarra></NavBarra>
         <Barra></Barra>
         <Routes>
@@ -62,7 +63,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
-    </MyContext.Provider>
+    </AppProvider>
   );
 }
 
