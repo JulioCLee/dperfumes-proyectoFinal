@@ -39,9 +39,10 @@ const CarruselButtom = () => {
   return (
     <div className='d-flex' >
       {
-        images.map((image)=> (
+        images.map((image, index)=> (
           <img
-          style={{margin:"16px", overflow:"auto", width:'100px'}}  
+          key={index}
+          style={{margin:"16px", overflow:"auto"}}  
           src={image.url}
           alt={image.title} />
         ))  

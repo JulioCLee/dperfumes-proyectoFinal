@@ -8,7 +8,7 @@ const Footer = () => {
         </div>
         <hr />
         <div>
-        ©2023 d'Perfumes.cl Perfumería y Belleza
+        ©2023 D'Perfumes.cl Perfumería y Belleza
         </div>
     </div>
   )
