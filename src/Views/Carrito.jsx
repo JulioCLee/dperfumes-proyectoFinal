@@ -17,8 +17,9 @@ const Carrito = () => {
           </Col>
         })
       }
-    </div>
+    </div >
   )
 }
 
 export default Carrito
+

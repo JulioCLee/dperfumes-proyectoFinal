@@ -299,3 +299,17 @@ span {
 .favorito {
   background-color: #f5f5f5;
 }
+
+#footer{
+  background-color: #212529;
+  font-size: 20px;
+}
+
+.footerHeader{
+  font-size: 50px;
+}
+
+
+.footer{
+  height: auto;
+}

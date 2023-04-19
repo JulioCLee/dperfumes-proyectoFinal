@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 
 import { useStore } from '../Contexts/MyContext';
 
@@ -8,15 +8,24 @@ import { useStore } from '../Contexts/MyContext';
 const Barra = () => {
 
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
-    const { store: { perfumes } } = useStore()
+    const { store, setStore } = useStore()
+    const { perfumes, sortCritieria } = store
     /* const { perfumes } = useContext(MyContext); */
+    const navigate = useNavigate();
+
+
+    const handleFilter = (p) => {
+        navigate(`/marca/${p}`);
+    }
+
+    const handleFilterDos = (p) => {
+        navigate(`/genero/${p}`);
+    }
 
     const marcasPerfumes = perfumes.map((p) => {
         return p.MARCA;
     })
-    const tipoPerfumes = perfumes.map((p) => {
-        return p.TIPO;
-    })
+
     const generoPerfumes = perfumes.map((p) => {
         return p.GENERO;
     })
@@ -24,11 +33,6 @@ const Barra = () => {
     const marcas = new Set(marcasPerfumes);
 
     const marcasUnicas = [...marcas];
-
-    //tipo //
-    const tipo = new Set(tipoPerfumes);
-
-    const tipoUnicas = [...tipo];
 
     // genero //
     const genero = new Set(generoPerfumes);
@@ -51,19 +55,7 @@ const Barra = () => {
                         <Dropdown.Menu>
                             {
                                 marcasUnicas.map((p, k) => {
-                                    return <Dropdown.Item key={k} >{p}</Dropdown.Item>
-                                })
-                            }
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
-                            Tipo
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {
-                                tipoUnicas.map((p, c) => {
-                                    return <Dropdown.Item key={c} href="">{p}</Dropdown.Item>
+                                    return <Dropdown.Item onClick={() => handleFilter(p)} key={`${p}-${k}`}>{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>
@@ -75,7 +67,7 @@ const Barra = () => {
                         <Dropdown.Menu>
                             {
                                 generoUnicas.map((p, a) => {
-                                    return <Dropdown.Item key={a} href="">{p}</Dropdown.Item>
+                                    return <Dropdown.Item onClick={() => handleFilterDos(p)}  key={`${p}-${a}`}>{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>

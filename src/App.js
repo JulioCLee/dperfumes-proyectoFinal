@@ -17,8 +17,8 @@ import Perfil from './Views/Perfil';
 
 function App() {
   const [storeGlobal, setStoreGlobal] = useState({
-    perfumes: [], 
-    sortCritieria: [],
+    perfumes: [],
+    sortCritieria: { MARCAS: [], GENERO: [] },
     searchTerms: "",
     usuarios: [],
     conectado: null,
@@ -32,6 +32,8 @@ function App() {
         <Barra></Barra>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/marca/:name" element={<Home></Home>}></Route>
+          <Route path="/genero/:name" element={<Home></Home>}></Route>
           <Route path="/carrito" element={<Carrito></Carrito>}></Route>
           <Route path="/detalle/:SKU" element={<Detalle></Detalle>}></Route>
           <Route path="/productos" element={<Productos></Productos>}></Route>

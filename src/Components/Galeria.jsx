@@ -1,14 +1,29 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
-import  { useStore } from '../Contexts/MyContext';
+import { useStore } from '../Contexts/MyContext';
 import CardPerfumes from './CardPerfumes';
+import { useParams } from 'react-router-dom';
 
 const Galeria = ({ fav = false }) => {
     const { store } = useStore()
     const { perfumes, searchTerms } = store
-    console.log(searchTerms);
-    /*     const { perfumes } = useContext(MyContext);
-     */
+    const { name } = useParams();
+    const pathname = window.location.pathname
+
+
+    const sortBy = () => {
+        let result = ""
+        if (pathname?.includes('/marca/') && name) {
+            result = name
+        }
+        if (pathname?.includes('/genero/') && name) {
+            result = name
+        }
+        return result
+    }
+
+
+
     const pagination = () => {
         return perfumes.slice(0, 16);
     }
@@ -25,6 +40,15 @@ const Galeria = ({ fav = false }) => {
                         }
                     }).filter((perfume) => {
                         return perfume && perfume.TITULO.toLowerCase().includes(searchTerms.toLowerCase())
+                    }).filter((perfume) => {
+                        if (sortBy()) {
+                            return perfume.MARCA == sortBy()
+                        } if (sortBy()) {
+                            return perfume.GENERO == sortBy()
+                        } else {
+                            return perfume
+                        }
+                       
                     }).map((perfume) => {
                         return <Col className='p-0 m-0' key={perfume.SKU}>
                             <CardPerfumes perfume={perfume}></CardPerfumes>

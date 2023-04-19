@@ -4,8 +4,10 @@ import Header from '../Components/Header'
 import Post from '../Components/Post';
 import Galeria from '../Components/Galeria';
 
-const Home = () => {
 
+const Home = () => {
+ 
+             
   return (
     <div>
         <Header></Header>
