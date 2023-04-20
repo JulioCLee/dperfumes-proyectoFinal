@@ -32,8 +32,8 @@ function App() {
         <Barra></Barra>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/marca/:name" element={<Home></Home>}></Route>
-          <Route path="/genero/:name" element={<Home></Home>}></Route>
+          <Route path="/marca/:name" element={<Productos></Productos>}></Route>
+          <Route path="/genero/:name" element={<Productos></Productos>}></Route>
           <Route path="/carrito" element={<Carrito></Carrito>}></Route>
           <Route path="/detalle/:SKU" element={<Detalle></Detalle>}></Route>
           <Route path="/productos" element={<Productos></Productos>}></Route>
@@ -41,7 +41,6 @@ function App() {
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
           <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
           <Route path="/perfil" element={<Perfil></Perfil>}></Route>
-
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
