@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap';
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { useStore } from '../Contexts/MyContext';
 
@@ -10,7 +10,6 @@ const Barra = () => {
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
     const { store, setStore } = useStore()
     const { perfumes, sortCritieria } = store
-    /* const { perfumes } = useContext(MyContext); */
     const navigate = useNavigate();
 
 
@@ -67,7 +66,7 @@ const Barra = () => {
                         <Dropdown.Menu>
                             {
                                 generoUnicas.map((p, a) => {
-                                    return <Dropdown.Item onClick={() => handleFilterDos(p)}  key={`${p}-${a}`}>{p}</Dropdown.Item>
+                                    return <Dropdown.Item onClick={() => handleFilterDos(p)} key={`${p}-${a}`}>{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>

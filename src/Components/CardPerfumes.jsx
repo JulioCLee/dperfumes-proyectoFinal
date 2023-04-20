@@ -10,8 +10,8 @@ import { BsHeart } from 'react-icons/bs';
 const CardPerfumes = ({ perfume }) => {
     const { store, setStore } = useStore()
     const { perfumes, cart } = store
-/*     const { perfumes, setPerfumes } = useContext(MyContext);
- */    const navigate = useNavigate();
+
+    const navigate = useNavigate();
 
     const detallePerfume = (sku) => {
         navigate(`/detalle/${sku}`);
@@ -21,7 +21,6 @@ const CardPerfumes = ({ perfume }) => {
         const fotoConClick = perfumes.findIndex((f) => f.SKU === SKU);
         perfumes[fotoConClick].liked = !perfumes[fotoConClick].liked;
         setStore({ ...store, perfumes: perfumes })
-        /*   setPerfumes([...perfumes]) */
     }
 
     const handleCart = (perfume) => {

@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const Galeria = ({ fav = false }) => {
     const { store } = useStore()
     const { perfumes, searchTerms } = store
-    const { name } = useParams();
+    const { name, genero } = useParams();
     const pathname = window.location.pathname
 
 
@@ -16,13 +16,11 @@ const Galeria = ({ fav = false }) => {
         if (pathname?.includes('/marca/') && name) {
             result = name
         }
-        if (pathname?.includes('/genero/') && name) {
-            result = name
+        if (pathname?.includes('/genero/') && genero) {
+            result = genero;
         }
         return result
     }
-
-
 
     const pagination = () => {
         return perfumes.slice(0, 16);
@@ -45,7 +43,8 @@ const Galeria = ({ fav = false }) => {
                             return perfume.MARCA == sortBy()
                         } if (sortBy()) {
                             return perfume.GENERO == sortBy()
-                        } else {
+                        }                        
+                        else {
                             return perfume
                         }
                        
