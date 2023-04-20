@@ -11,6 +11,7 @@ const Home = () => {
   return (
     <div>
         <Header></Header>
+      <p className='tituloProducto'>Productos Destacados</p>
         <Galeria></Galeria>
         <Post></Post>
         <CarruselButtom></CarruselButtom>

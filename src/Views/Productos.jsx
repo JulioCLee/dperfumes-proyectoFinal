@@ -4,7 +4,7 @@ import Galeria from '../Components/Galeria'
 const Productos = () => {
   return (
     <div>
-      <p className='tituloProducto'>Productos Destacados</p>
+      <p className='tituloProducto'>Perfumes</p>
       <Galeria></Galeria>
     </div>
   )
