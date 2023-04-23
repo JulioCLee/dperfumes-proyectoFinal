@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext({});
 
 const AppProvider = ({ children, storeGlobal }) => {
+    
 
     const [store, setStore] = useState(storeGlobal);
     useEffect(() => {
@@ -16,6 +17,8 @@ const AppProvider = ({ children, storeGlobal }) => {
         }
         fetchData();
     }, [])
+
+    console.log(store);
 
     return (
         <AppContext.Provider value={{ store, setStore }}>

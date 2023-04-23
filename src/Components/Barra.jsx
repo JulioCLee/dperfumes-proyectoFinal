@@ -28,6 +28,7 @@ const Barra = () => {
     const generoPerfumes = perfumes.map((p) => {
         return p.GENERO;
     })
+    
     //marcas//
     const marcas = new Set(marcasPerfumes);
 

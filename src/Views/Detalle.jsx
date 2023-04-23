@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import MyContext, { useStore } from '../Contexts/MyContext'
+import React from 'react'
+import { useStore } from '../Contexts/MyContext'
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
@@ -10,8 +10,7 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 const Detalle = () => {
     const { store } = useStore()
     const { perfumes } = store;
-/*     const { perfumes } = useContext(MyContext);
- */    const { SKU } = useParams();
+    const { SKU } = useParams();
 
     const perfume = perfumes.find((p) => p.SKU === SKU);
 

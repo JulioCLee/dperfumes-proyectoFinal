@@ -10,24 +10,23 @@ const InicioSesion = () => {
     const [password, setPassword] = useState('');
     const { store, setStore } = useStore()
     const { usuarios } = store;
-/*     const { usuarios, setConectado } = useContext(MyContext);
- */    const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    console.log(usuarios);
 
     const validarEmail = () => {
         const usuarioValido = usuarios.find((usuario) => usuario.email === email && usuario.clave === password);
 
         if (usuarioValido) {
             setStore({ ...store, conectado: { estado: true, correo: usuarioValido.email, nombre: usuarioValido.nombre } })
-/*             setConectado({estado: true, correo: usuarioValido.email, nombre: usuarioValido.nombre });
- */            navigate(`/`)
+            navigate(`/`)
         } else {
-            /*  setConectado(false); */
             setStore({ ...store, conectado: null })
             alert("usuario no valido");
         }
+        console.log(store)
     }
-
-
+    
     return (
         <div className='boxForm'>
             <h3>Ingresa a su cuenta</h3>

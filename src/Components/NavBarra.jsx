@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { Nav, Button } from 'react-bootstrap';
+import React from 'react'
+import { Nav} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png'
-import { TfiSearch } from 'react-icons/tfi';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { useStore } from '../Contexts/MyContext';
 import { Dropdown } from 'react-bootstrap';
@@ -10,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBarra = () => {
     const { store, setStore } = useStore();
-    const { conectado, searchTerms } = store;
+    const { conectado, searchTerms } = store;   
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
 
 
@@ -19,8 +18,6 @@ const NavBarra = () => {
         setStore({ ...store, searchTerms: a })
     }
 
-
-    /* const { conectado, setConectado } = useContext(MyContext); */
     const navigate = useNavigate();
 
 
@@ -28,7 +25,6 @@ const NavBarra = () => {
         setStore({ ...store, conectado: false })
         navigate(`/`)
     }
-
 
     return (
         <div className='barra'>
@@ -53,8 +49,6 @@ const NavBarra = () => {
                                 <NavLink className="lst"
                                     to="/carrito"><RiShoppingCartLine className='fs-5 ms-2'></RiShoppingCartLine></NavLink>
                             </Dropdown>
-
-
                             :
                             <Nav>
                                 <NavLink className={setActiveClass}

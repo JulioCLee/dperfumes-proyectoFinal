@@ -14,16 +14,20 @@ import NavBarra from './Components/NavBarra';
 import Favoritos from './Views/Favoritos';
 import AppProvider from './Contexts/MyContext';
 import Perfil from './Views/Perfil';
+import NoValido from './Views/NoValido';
 
 function App() {
+
   const [storeGlobal, setStoreGlobal] = useState({
     perfumes: [],
     sortCritieria: { MARCAS: [], GENERO: [] },
     searchTerms: "",
     usuarios: [],
-    conectado: null,
+    conectado: {},
     cart: [],
   });
+
+  console.log(storeGlobal)
 
   return (
     <AppProvider storeGlobal={storeGlobal}>
@@ -33,14 +37,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/marca/:name" element={<Productos></Productos>}></Route>
-          <Route path="/genero/:name" element={<Productos></Productos>}></Route>
+          <Route path="/genero/:genero" element={<Productos></Productos>}></Route>
           <Route path="/carrito" element={<Carrito></Carrito>}></Route>
           <Route path="/detalle/:SKU" element={<Detalle></Detalle>}></Route>
           <Route path="/productos" element={<Productos></Productos>}></Route>
           <Route path="/registro" element={<Registro></Registro>}></Route>
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
-          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
-          <Route path="/perfil" element={<Perfil></Perfil>}></Route>
+          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>            
+          {
+            storeGlobal.conectado.estado ===! true && <Route path="/perfil" element={<Perfil></Perfil>}></Route>
+          }
+          <Route path="*" element={<NoValido></NoValido>}></Route>
+
         </Routes>
       </BrowserRouter>
       <Footer></Footer>

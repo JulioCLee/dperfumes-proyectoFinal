@@ -314,3 +314,12 @@ span {
 .footer{
   height: auto;
 }
+
+.noValidoLogo{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 24px;
+}
+
