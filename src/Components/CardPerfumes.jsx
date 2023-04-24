@@ -9,7 +9,7 @@ import { BsHeart } from 'react-icons/bs';
 
 const CardPerfumes = ({ perfume }) => {
     const { store, setStore } = useStore()
-    const { perfumes, cart } = store
+    const { perfumes, cart, setCart, totalPedido, setTotalPedido } = store
 
     const navigate = useNavigate();
 
@@ -24,8 +24,7 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        setStore({ ...store, cart: [...cart, perfume] })
-        console.log(cart);
+        setStore({ ...store, cart: [...cart, perfume], cant:1 })
     }
 
     return (

@@ -25,6 +25,7 @@ function App() {
     usuarios: [],
     conectado: {},
     cart: [],
+    totalPedido:"",
   });
 
   console.log(storeGlobal)
