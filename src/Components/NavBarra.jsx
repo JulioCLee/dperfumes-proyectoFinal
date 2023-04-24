@@ -9,9 +9,16 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBarra = () => {
     const { store, setStore } = useStore();
-    const { conectado, searchTerms } = store;   
+    const { conectado, searchTerms, totalPedido } = store;   
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    })
+
+    var value = totalPedido;
 
     const handleSearch = (e) => {
         let a = e.target.value;
@@ -56,7 +63,7 @@ const NavBarra = () => {
                                 <NavLink className={setActiveClass}
                                     to="/sesion">Iniciar sesión</NavLink>
                                 <NavLink className="lst"
-                                    to="/carrito"><RiShoppingCartLine className='fs-5 ms-2'></RiShoppingCartLine></NavLink>
+                                    to="/carrito">🛒{formatter.format(value)}</NavLink>
                             </Nav>
                     }
                 </div>
