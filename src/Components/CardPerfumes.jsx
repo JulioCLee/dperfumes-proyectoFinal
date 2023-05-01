@@ -34,16 +34,15 @@ const CardPerfumes = ({ perfume }) => {
         /*         setStore({ ...store, cart: [...cart, perfume] })
          */
         const perfumeSeleccionado = { SKU: perfume.SKU, cant: 1, IMG: perfume.IMG, PRECIO: perfume.PRECIO, MARCA: perfume.MARCA };
-        const idx = cart.findIndex((p) => p.SKU === p.SKU);
+
+        const idx = cart.find((p) => p.SKU === p.SKU);
         if (idx >= 0) {
             cart[idx].cant += 1;
-            setStore({ ...store, cart: [...cart] });
+            setStore({ ...store, cart});
         } else {
             setStore({ ...store, cart: [...cart, perfumeSeleccionado] });
         }
     }
-
-
 
 
     const noValido = () => {
