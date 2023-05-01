@@ -87,15 +87,22 @@ code {
   border-radius: 10px;
 }
 
+.cardPerfumes:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease-in-out;
+}
+
 .cardBody {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: 0.5;
+
 }
 
 .cardTexto {
-  height: 50px !important;
+  height: 20px !important;
 }
 
 .imgPerfumes {
@@ -193,8 +200,14 @@ code {
   font-size: 20px;
   font-weight: 500;
   margin: 0;
-  margin-right: 20px;
 }
+
+.btext{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .iconoCarrito {
   font-size: 22px;
@@ -297,8 +310,14 @@ span {
   border: none;
 }
 
+.botonCarrito{
+  transition: 0.5;
+}
+
+
 .favorito {
   background-color: #f5f5f5;
+  padding-bottom: 60px;
 }
 
 #footer{
@@ -368,4 +387,11 @@ span {
 
 .tittle{
   width: 50%;
+}
+
+.pInteres{
+  color: #696969;
+  font-weight: 100;
+  font-size: 14px;
+  margin-bottom: 4px;
 }
