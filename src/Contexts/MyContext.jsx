@@ -18,7 +18,7 @@ const AppProvider = ({ children, storeGlobal }) => {
         fetchData();
     }, [])
 
-    console.log(store);
+
 
     return (
         <AppContext.Provider value={{ store, setStore }}>

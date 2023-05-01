@@ -3,13 +3,14 @@ import { Dropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { useStore } from '../Contexts/MyContext';
+import Registro from '../Views/Registro';
 
 
 const Barra = () => {
 
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
     const { store, setStore } = useStore()
-    const { perfumes, sortCritieria } = store
+    const { perfumes, sortCritieria, conectado } = store
     const navigate = useNavigate();
 
 
@@ -47,7 +48,15 @@ const Barra = () => {
                 <ul className='m-0 pb-3 listNav'>
                     <li><NavLink to="/" className={setActiveClass}>Home</NavLink></li>
                     <li><NavLink to="/productos" className={setActiveClass}>Perfumes</NavLink></li>
-                    <li><NavLink to="/favoritos" className={setActiveClass}>Favoritos</NavLink></li>
+                    {
+                        conectado !== null && conectado.estado ?
+                        <div>
+                          <li><NavLink to="/favoritos" className={setActiveClass}>Favoritos</NavLink></li>
+                        </div>
+                        :
+                        null
+                    }
+                    
                     <Dropdown  >
                         <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
                             Marcas

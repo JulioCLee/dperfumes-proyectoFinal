@@ -315,7 +315,7 @@ span {
   height: auto;
 }
 
-.noValidoLogo{
+.noValidoLogo, .logPerfil{
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -323,3 +323,31 @@ span {
   margin-bottom: 24px;
 }
 
+.aside{
+  display: flex;
+  align-items: center;
+}
+
+.interface{
+  display: flex;
+  margin: 24px;
+  width: 400px;
+}
+
+
+.interface h2{
+  width: 240px;
+}
+
+.interLink{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.interLink2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}

@@ -12,7 +12,6 @@ const NavBarra = () => {
     const { conectado, searchTerms } = store;   
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
 
-
     const handleSearch = (e) => {
         let a = e.target.value;
         setStore({ ...store, searchTerms: a })

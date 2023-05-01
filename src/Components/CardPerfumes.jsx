@@ -6,16 +6,20 @@ import { useStore } from '../Contexts/MyContext';
 import { BsHeart } from 'react-icons/bs';
 
 
-
 const CardPerfumes = ({ perfume }) => {
     const { store, setStore } = useStore()
-    const { perfumes, cart } = store
+    const { perfumes, cart, conectado } = store
 
     const navigate = useNavigate();
 
     const detallePerfume = (sku) => {
         navigate(`/detalle/${sku}`);
     }
+
+    const reDireccion = () => {
+        navigate(`/registro`);
+    }
+
 
     const setFavorito = (SKU) => {
         const fotoConClick = perfumes.findIndex((f) => f.SKU === SKU);
@@ -28,10 +32,24 @@ const CardPerfumes = ({ perfume }) => {
         console.log(cart);
     }
 
+    const noValido = () => {
+        reDireccion();
+    }
+
     return (
         <div className='cardPerfumes'>
             <Button type='button' id='boton' onClick={() => setFavorito(perfume.SKU)} variant="light">
-                <BsHeart className='favCorazon' style={{ color: perfume.liked ? "red" : "black" }}></BsHeart>
+                {
+                    conectado !== null && conectado.estado ?
+                        <div>
+                            <BsHeart className='favCorazon' style={{ color: perfume.liked ? "red" : "black" }}></BsHeart>
+                        </div>
+                        :
+                        <div className='logPerfil'>
+                            <BsHeart className='favCorazon' style={{ color: "black" }} onClick={() => noValido()}></BsHeart>
+                        </div>
+                }
+
             </Button>
             <div className='imgPerfumes'>
                 <div onClick={() => detallePerfume(perfume.SKU)}>

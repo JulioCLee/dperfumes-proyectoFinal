@@ -12,21 +12,20 @@ const InicioSesion = () => {
     const { usuarios } = store;
     const navigate = useNavigate();
 
-    console.log(usuarios);
-
     const validarEmail = () => {
         const usuarioValido = usuarios.find((usuario) => usuario.email === email && usuario.clave === password);
 
         if (usuarioValido) {
             setStore({ ...store, conectado: { estado: true, correo: usuarioValido.email, nombre: usuarioValido.nombre } })
+            console.log(store);
             navigate(`/`)
         } else {
             setStore({ ...store, conectado: null })
             alert("usuario no valido");
         }
-        console.log(store)
     }
     
+
     return (
         <div className='boxForm'>
             <h3>Ingresa a su cuenta</h3>
