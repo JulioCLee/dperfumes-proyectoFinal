@@ -29,7 +29,7 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        setStore({ ...store, cart: [...cart, perfume], cant:1 })
+        setStore({ ...store, cart: [...cart, perfume] })
     }
 
     const noValido = () => {
