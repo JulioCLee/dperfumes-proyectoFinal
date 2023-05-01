@@ -56,10 +56,10 @@ const Footer = () => {
           <Row>
             <Col className='colFooter2'>
               <ul className='footerCol2'>
-                <li> <i class="fa-brands fa-facebook"></i> </li>
-                <li><i class="fa-brands fa-twitter"></i> </li>
-                <li> <i class="fa-brands fa-youtube"></i> </li>
-                <li><i class="fa-brands fa-instagram"></i></li>
+                <li> <i className="fa-brands fa-facebook"></i> </li>
+                <li><i className="fa-brands fa-twitter"></i> </li>
+                <li> <i className="fa-brands fa-youtube"></i> </li>
+                <li><i className="fa-brands fa-instagram"></i></li>
               </ul>
               <ul className='footerCol3'>
                 <li>Términos y condiciones</li>
