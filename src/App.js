@@ -30,6 +30,7 @@ function App() {
     usuarios: "",
     conectado: {},
     cart: [],
+    totalPedido:"",
   });
 
   return (
