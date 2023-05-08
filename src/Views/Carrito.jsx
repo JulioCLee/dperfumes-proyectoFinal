@@ -5,23 +5,34 @@ import { Button } from 'react-bootstrap';
 const Carrito = () => {
 
   const { store, setStore } = useStore()
-  const { perfumes, cart, totalPedido } = store
+  const { cart, totalPedido } = store
 
+  const calcularTotal = () => {
+    const totalPedido = cart.reduce((acc, cur) => {
+      return acc + cur.cant;
+    }, 0);
+    return totalPedido;
+  }
 
   const disminuirCantidad = (SKU) => {
     const idx = cart.findIndex((p) => p.SKU === SKU);
     if (idx >= 0) {
-      cart[idx].cant -= 1;
-      setStore({...store,cart});
+      if (cart[idx].cant === 1) {
+        // Si la cantidad del producto es 1, se elimina del carrito
+        cart.splice(idx, 1);
+      } else {
+        // De lo contrario, se reduce la cantidad del producto en 1
+        cart[idx].cant -= 1;
+      }
+      setStore({ ...store, cart });
     }
-
   }
 
   const aumentarCantidad = (SKU) => {
     const idx = cart.findIndex((p) => p.SKU === SKU);
     if (idx >= 0) {
       cart[idx].cant += 1;
-      setStore({...store, cart});
+      setStore({ ...store, cart });
     }
 
   }
