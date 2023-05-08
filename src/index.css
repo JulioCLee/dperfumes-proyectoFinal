@@ -382,10 +382,21 @@ span {
 
 
 .detallePedido img {
-  width: 46px;
+  width: 60px;
   margin: 6px;
 
 }
+
+.detallePedido { 
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+  width: 100%;
+  height: 25%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+}
+
 
 .tittle {
   width: 50%;
@@ -447,4 +458,23 @@ span {
 .colFooter2 {
   display: flex;
   justify-content: center;
+}
+
+.flexButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+.detallePedido div{
+  width: 300px;
+  margin: 0px 10px;
+  text-align: center;
 }

@@ -5,14 +5,8 @@ import { Button } from 'react-bootstrap';
 const Carrito = () => {
 
   const { store, setStore } = useStore()
-  const { cart, totalPedido } = store
+  const { cart, totalPedido, setTotalPedido } = store
 
-  const calcularTotal = () => {
-    const totalPedido = cart.reduce((acc, cur) => {
-      return acc + cur.cant;
-    }, 0);
-    return totalPedido;
-  }
 
   const disminuirCantidad = (SKU) => {
     const idx = cart.findIndex((p) => p.SKU === SKU);
@@ -37,6 +31,17 @@ const Carrito = () => {
 
   }
 
+
+  const calcularTotal = () => {
+    let total = cart.reduce((acc, cur) => {
+      return acc + cur.PRECIO;
+    }, 0);
+    return total;
+  }
+
+  let total = calcularTotal();
+
+
   return (
     <div>
       {
@@ -46,30 +51,34 @@ const Carrito = () => {
             {
               cart && cart.map((perfume, i) => {
                 return (
-                  <div key={i} className='detallePedido'>
-                    <div className='tittle'>
-                      <h4>Producto</h4>
-                      <div className='boxCaja'>
-                        <img src={perfume.IMG} alt="img" />
-                        <span>{perfume.MARCA}</span>
+                  <div key={i} >
+                    <div className='detallePedido'>
+                      <div className='tittle'>
+                        <h4>Producto</h4>
+                        <div className='boxCaja'>
+                          <img src={perfume.IMG} alt="img" />
+                          <span>{perfume.MARCA}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className='precioCantidad'>
-                      <div className='pe-5' >
-                        <h4>Sub-total</h4>
-                        <span> ${perfume.PRECIO * perfume.cant}</span>
+                      <div className='precioCantidad'>
+                        <div className='pe-5' >
+                          <h4>Sub-total</h4>
+                          <span> ${perfume.PRECIO * perfume.cant}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <h4>Cantidad</h4>
-                      <Button className='mx-2 px-3' variant="danger" onClick={() => disminuirCantidad(perfume.SKU)}>-</Button>
-                      <span>{perfume.cant}</span>
-                      <Button className='mx-2 px-3' onClick={() => aumentarCantidad(perfume.SKU)} >+</Button>
+                      <div>
+                        <h4>Cantidad</h4>
+                        <div className='flexButtons'>
+                          <Button className='mx-2 px-3' variant="secondary" onClick={() => disminuirCantidad(perfume.SKU)}>-</Button>
+                          <span>{perfume.cant}</span>
+                          <Button className='mx-2 px-3' variant="secondary" onClick={() => aumentarCantidad(perfume.SKU)} >+</Button>
+                        </div>
+                      </div>
                     </div>
                   </div>)
               })
             }
-            <strong className='totalP'>Total pedido: ${totalPedido}</strong>
+            <strong className='totalP'>Total pedido: ${total}</strong>
           </div>
         </div>
       }

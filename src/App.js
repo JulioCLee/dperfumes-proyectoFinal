@@ -31,6 +31,7 @@ function App() {
     conectado: {},
     cart: [],
     totalPedido: 0,
+    setTotalPedido: 0,
   });
 
   return (
