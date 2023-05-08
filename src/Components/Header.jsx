@@ -5,10 +5,15 @@ import banner2 from '../assets/img/banner2.jpg';
 
 const Header = () => {
   return (
+    <div>
+      <div className='slayer'>
+      <p> 🔖 El regalo perfecto lo encuentras en D'Perfumes 🔖</p>
+      </div>
     <Carousel>
       <Carousel.Item>
         <img
-          className="d-block -100"
+        // style={{height:"440px" }}
+          className="d-block w-100"
           src={banner}
           alt="First slide"
         />
@@ -21,6 +26,7 @@ const Header = () => {
         />
       </Carousel.Item>
     </Carousel>
+    </div>
   )
 }
 

@@ -16,8 +16,19 @@ const InicioSesion = () => {
         const usuarioValido = usuarios.find((usuario) => usuario.email === email && usuario.clave === password);
 
         if (usuarioValido) {
-            setStore({ ...store, conectado: { estado: true, correo: usuarioValido.email, nombre: usuarioValido.nombre } })
-            console.log(store);
+            setStore({ ...store, 
+            conectado: {
+            estado: true,
+            correo: usuarioValido.email,
+            nombre: usuarioValido.nombre,
+            apellido: usuarioValido.apellido,
+            clave: usuarioValido.clave,
+            comuna: usuarioValido.comuna,
+            telefono: usuarioValido.telefono,
+            id: usuarioValido.id 
+        
+        } })
+
             navigate(`/`)
         } else {
             setStore({ ...store, conectado: null })
@@ -25,7 +36,6 @@ const InicioSesion = () => {
         }
     }
     
-
     return (
         <div className='boxForm'>
             <h3>Ingresa a su cuenta</h3>

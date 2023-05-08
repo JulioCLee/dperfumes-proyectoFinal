@@ -1,20 +1,19 @@
 [
     {
-      "nombre": "Julio",
-      "apellido": "123456789",
+      "nombre": "admin",
+      "apellido": "admin",
       "email": "admin@gmail.com",
       "clave": "123456789",
       "comuna": "Santiago",
-      "telefono": "123456789",
-      "id": "1"      
+      "telefono": "954561612",
+      "id": "ad1"      
     },
     {
       "nombre": "Invitado",
-      "apellido": "123456789",
+      "apellido": "Invitado",
       "email": "invitado@gmail.com",
-      "clave": "789456123",
+      "clave": "1234",
       "comuna": "Santiago",
-      "telefono": "123456789",
-      "id": "2"
+      "telefono": "954561613"
     }
   ]

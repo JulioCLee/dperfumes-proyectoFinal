@@ -1,10 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import { useStore } from '../Contexts/MyContext';
-import Registro from '../Views/Registro';
-
 
 const Barra = () => {
 
@@ -12,7 +9,6 @@ const Barra = () => {
     const { store, setStore } = useStore()
     const { perfumes, sortCritieria, conectado } = store
     const navigate = useNavigate();
-
 
     const handleFilter = (p) => {
         navigate(`/marca/${p}`);
@@ -39,7 +35,6 @@ const Barra = () => {
     const genero = new Set(generoPerfumes);
 
     const generoUnicas = [...genero];
-
 
     return (
         <div className='barra'>

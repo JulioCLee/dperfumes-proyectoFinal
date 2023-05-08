@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const CardPerfumes = ({ perfume }) => {
     const { store, setStore } = useStore()
-    const { perfumes, cart, setCart, totalPedido, setTotalPedido, conectado } = store
+    const { perfumes, cart, conectado } = store
 
     const navigate = useNavigate();
 
@@ -29,9 +29,11 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        setStore({ ...store, cart: [...cart, perfume] })
+        setStore({...store, cart: {...cart, sku: perfume.SKU, cant: 1, precio: perfume.PRECIO }})
+        console.log(store);
     }
 
+    
     const noValido = () => {
         reDireccion();
     }

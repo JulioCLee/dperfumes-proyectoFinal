@@ -1,16 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Interface from './Interface'
 import { useStore } from '../Contexts/MyContext'
+import {Form, Row } from 'react-bootstrap'
 
 const Datos = () => {
 
     const { store, setStore } = useStore()
     const { conectado, } = store
-    console.log(conectado)
+
     return (
         <div className='aside'>
             <Interface></Interface>
-            <p>{conectado.nombre}</p>
+            <Form style={{width:"650px", marginTop:"60px", marginLeft:"20px"}}>
+                <Row >
+                    <Form.Group className='datosP' >
+                        <Form.Label style={{width:"20%"}}>Nombre</Form.Label>
+                        <Form.Control
+                            type="text"
+                            disabled
+                            value={conectado.nombre}
+                        />
+                    </Form.Group>
+                    <Form.Group className='datosP'>
+                        <Form.Label style={{width:"20%"}}>apellido</Form.Label>
+                        <Form.Control
+
+                            type="text"
+                            disabled
+                            value={conectado.apellido}
+                        />
+                    </Form.Group>
+                    <Form.Group className='datosP'>
+                        <Form.Label style={{width:"20%"}}>Teléfono</Form.Label>
+                        <Form.Control 
+                        type="text" 
+                        disabled
+                        value={conectado.telefono}
+                        />
+                    </Form.Group>
+                    <Form.Group className='datosP'>
+                        <Form.Label style={{width:"20%"}}>Comuna</Form.Label>
+                        <Form.Control 
+                        type="text" 
+                        disabled
+                        value={conectado.comuna}
+                        />
+                    </Form.Group>
+                    <Form.Group className='datosP'>
+                        <Form.Label style={{width:"20%"}}>Email</Form.Label>
+                        <Form.Control
+                        type="Email"
+                        disabled
+                        value={conectado.correo}
+                        />
+                    </Form.Group>
+                    <Form.Group className='datosP'>
+                        <Form.Label style={{width:"20%"}}>Contraseña</Form.Label>
+                        <Form.Control 
+                        type="password" 
+                        value={conectado.clave}
+                        disabled
+                        />
+                    </Form.Group>
+                </Row>
+            </Form>
         </div>
     )
 }

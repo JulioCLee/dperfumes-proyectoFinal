@@ -50,7 +50,7 @@ const NavBarra = () => {
                                     {conectado.nombre}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className='p-2'>
-                                    <Dropdown.Item><NavLink className={setActiveClass} to="/perfil">Mi Perfil</NavLink></Dropdown.Item>
+                                    <Dropdown.Item><NavLink className={setActiveClass} to="/datos"> Mi Perfil</NavLink></Dropdown.Item>
                                     <Dropdown.Item><li onClick={cerrarApp} >Cerrar sesión</li></Dropdown.Item>
                                 </Dropdown.Menu>
                                 <NavLink className="lst"
