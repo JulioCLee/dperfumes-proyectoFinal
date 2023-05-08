@@ -1,20 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from 'react';
 import Home from './Views/Home';
 import Carrito from './Views/Carrito';
 import Detalle from './Views/Detalle';
 import Barra from './Components/Barra';
 import Productos from './Views/Productos';
-import { useState } from 'react';
 import Registro from './Views/Registro';
 import InicioSesion from './Views/InicioSesion';
 import Footer from './Components/Footer';
 import NavBarra from './Components/NavBarra';
 import Favoritos from './Views/Favoritos';
 import AppProvider from './Contexts/MyContext';
-import Perfil from './Views/Perfil';
+import Perfil from './Components/Perfil';
 import NoValido from './Views/NoValido';
+import Datos from './Views/Datos';
+import Publicaciones from './Views/Publicaciones';
+import CrearP from './Views/CrearP';
+
+
 
 function App() {
 
@@ -22,13 +27,11 @@ function App() {
     perfumes: [],
     sortCritieria: { MARCAS: [], GENERO: [] },
     searchTerms: "",
-    usuarios: [],
+    usuarios: "",
     conectado: {},
     cart: [],
-    totalPedido:"",
+    totalPedido: 0,
   });
-
-  console.log(storeGlobal)
 
   return (
     <AppProvider storeGlobal={storeGlobal}>
@@ -44,12 +47,12 @@ function App() {
           <Route path="/productos" element={<Productos></Productos>}></Route>
           <Route path="/registro" element={<Registro></Registro>}></Route>
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
-          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>            
-          {
-            storeGlobal.conectado.estado ===! true && <Route path="/perfil" element={<Perfil></Perfil>}></Route>
-          }
+          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
+          <Route path="/perfil" element={<Perfil></Perfil>}></Route>
+          <Route path="/datos" element={<Datos></Datos>}></Route>
+          <Route path="/publicaciones" element={<Publicaciones></Publicaciones>}></Route>
+          <Route path="/crear-publicacion" element={<CrearP></CrearP>}></Route>
           <Route path="*" element={<NoValido></NoValido>}></Route>
-
         </Routes>
       </BrowserRouter>
       <Footer></Footer>

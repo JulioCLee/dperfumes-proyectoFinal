@@ -87,15 +87,22 @@ code {
   border-radius: 10px;
 }
 
+.cardPerfumes:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease-in-out;
+}
+
 .cardBody {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: 0.5;
+
 }
 
 .cardTexto {
-  height: 50px !important;
+  height: 20px !important;
 }
 
 .imgPerfumes {
@@ -193,8 +200,14 @@ code {
   font-size: 20px;
   font-weight: 500;
   margin: 0;
-  margin-right: 20px;
 }
+
+.btext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .iconoCarrito {
   font-size: 22px;
@@ -297,25 +310,32 @@ span {
   border: none;
 }
 
-.favorito {
-  background-color: #f5f5f5;
+.botonCarrito {
+  transition: 0.5;
 }
 
-#footer{
+
+.favorito {
+  background-color: #f5f5f5;
+  padding-bottom: 60px;
+}
+
+#footer {
   background-color: #212529;
   font-size: 20px;
 }
 
-.footerHeader{
+.footerHeader {
   font-size: 50px;
 }
 
 
-.footer{
+.footer {
   height: auto;
 }
 
-.noValidoLogo{
+.noValidoLogo,
+.logPerfil {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -323,7 +343,36 @@ span {
   margin-bottom: 24px;
 }
 
-.boxCarrito{
+.aside {
+  display: flex;
+  align-items: center;
+}
+
+.interface {
+  display: flex;
+  margin: 24px;
+  width: 400px;
+}
+
+
+.interface h2 {
+  width: 240px;
+}
+
+.interLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.interLink2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.boxCarrito {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -332,12 +381,70 @@ span {
 }
 
 
-.detallePedido img{
+.detallePedido img {
   width: 46px;
   margin: 6px;
-  
+
 }
 
-.tittle{
+.tittle {
   width: 50%;
+}
+
+.pInteres {
+  color: #696969;
+  font-weight: 100;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.footerCol {
+  list-style: none;
+  font-size: 15px;
+  margin: 10px 0px;
+}
+
+.footerCol a {
+  text-decoration: none;
+  color: white;
+  list-style: none;
+  text-align: left;
+}
+
+.colFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.colFooter h3 {
+  font-size: 20px;
+}
+
+.footerCol2 {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  list-style: none;
+}
+
+.footerCol2 li {
+  margin: 0px 15px;
+}
+
+.footerCol3 {
+  text-decoration: none;
+  list-style: none;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footerCol3 li {
+  margin: 0px 15px;
+}
+
+.colFooter2 {
+  display: flex;
+  justify-content: center;
 }
