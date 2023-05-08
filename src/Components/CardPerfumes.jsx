@@ -24,7 +24,25 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        setStore({ ...store, cart: [...cart, perfume], cant:1 })
+        const perfumeSeleccionado = {
+            SKU: perfume.SKU,
+            cant: 1,
+            IMG: perfume.IMG,
+            PRECIO: perfume.PRECIO,
+            MARCA: perfume.MARCA,
+          };
+      
+          const idx = cart.find((p) => p.SKU === perfume.SKU);
+      
+          if (idx) {
+            cart.filter((cartItem) =>
+              cartItem.SKU === perfume.SKU
+                ? { ...cartItem, cant: cartItem.cant++ }
+                : cartItem
+            );
+          } else {
+            setStore({ ...store, cart: [...cart,perfumeSeleccionado] });
+          }
     }
 
     return (
