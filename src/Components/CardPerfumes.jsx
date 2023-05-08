@@ -9,8 +9,7 @@ import { useState } from 'react';
 
 const CardPerfumes = ({ perfume }) => {
     const { store, setStore } = useStore()
-    const { perfumes, cart, conectado, totalPedido, setTotalPedido } = store
-    const sumatotal = totalPedido + perfume.PRECIO;
+    const { perfumes, cart, conectado } = store
 
 
     const navigate = useNavigate();
@@ -31,17 +30,25 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        /*         setStore({ ...store, cart: [...cart, perfume] })
-         */
-        const perfumeSeleccionado = { SKU: perfume.SKU, cant: 1, IMG: perfume.IMG, PRECIO: perfume.PRECIO, MARCA: perfume.MARCA };
-
-        const idx = cart.find((p) => p.SKU === p.SKU);
-        if (idx >= 0) {
-            cart[idx].cant += 1;
-            setStore({ ...store, cart});
-        } else {
-            setStore({ ...store, cart: [...cart, perfumeSeleccionado] });
-        }
+        const perfumeSeleccionado = {
+            SKU: perfume.SKU,
+            cant: 1,
+            IMG: perfume.IMG,
+            PRECIO: perfume.PRECIO,
+            MARCA: perfume.MARCA,
+          };
+      
+          const idx = cart.find((p) => p.SKU === perfume.SKU);
+      
+          if (idx) {
+            cart.filter((cartItem) =>
+              cartItem.SKU === perfume.SKU
+                ? { ...cartItem, cant: cartItem.cant++ }
+                : cartItem
+            );
+          } else {
+            setStore({ ...store, cart: [...cart,perfumeSeleccionado] });
+          }
     }
 
 
