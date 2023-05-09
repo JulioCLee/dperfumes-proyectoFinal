@@ -29,23 +29,40 @@ const CardPerfumes = ({ perfume }) => {
     }
 
     const handleCart = (perfume) => {
-        setStore({...store, cart: {...cart, sku: perfume.SKU, cant: 1, precio: perfume.PRECIO }})
-        console.log(store);
+        const perfumeSeleccionado = {
+            SKU: perfume.SKU,
+            cant: 1,
+            IMG: perfume.IMG,
+            PRECIO: perfume.PRECIO,
+            MARCA: perfume.MARCA,
+          };
+      
+          const idx = cart.find((p) => p.SKU === perfume.SKU);
+      
+          if (idx) {
+            cart.filter((cartItem) =>
+              cartItem.SKU === perfume.SKU
+                ? { ...cartItem, cant: cartItem.cant++ }
+                : cartItem
+            );
+          } else {
+            setStore({ ...store, cart: [...cart,perfumeSeleccionado] });
+          }
     }
 
-    
+
     const noValido = () => {
         reDireccion();
     }
 
-    const oferta =  Math.floor(perfume.PRECIO / 6);
+    const oferta = Math.floor(perfume.PRECIO / 6);
     const pNormal = Math.floor(perfume.PRECIO * 2);
 
     const [showBuyButton, setShowBuyButton] = useState(false);
 
     return (
         <div className='cardPerfumes'
-        onMouseEnter={() => setShowBuyButton(true)}
+            onMouseEnter={() => setShowBuyButton(true)}
             onMouseLeave={() => setShowBuyButton(false)}>
             <Button type='button' id='boton' onClick={() => setFavorito(perfume.SKU)} variant="light">
                 {
@@ -65,7 +82,7 @@ const CardPerfumes = ({ perfume }) => {
                 <div onClick={() => detallePerfume(perfume.SKU)}>
                     <Card.Img variant="top" style={{ width: '200px', cursor: "pointer" }} src={perfume.IMG} />
                 </div>
-                
+
             </div>
             <Card.Body className='cardBody'>
                 <Card.Title>{perfume.MARCA}</Card.Title>
@@ -74,21 +91,21 @@ const CardPerfumes = ({ perfume }) => {
                 </Card.Text>
                 <div className='carritoPrecio'>
                     <div className='btext'>
-                    <Card.Text style={{marginBottom:"0"}}>
-                        <del><span style={{ color:"grey", marginRight:"6px", fontSize:"16px" }}>${pNormal.toLocaleString("en")}</span></del>
-                        <span className='precios'>${perfume.PRECIO.toLocaleString("en")}</span>
-                    </Card.Text>
+                        <Card.Text style={{ marginBottom: "0" }}>
+                            <del><span style={{ color: "grey", marginRight: "6px", fontSize: "16px" }}>${pNormal.toLocaleString("en")}</span></del>
+                            <span className='precios'>${perfume.PRECIO.toLocaleString("en")}</span>
+                        </Card.Text>
                         <span className='pInteres'>6 x ${oferta.toLocaleString("en")} sin interés</span>
                     </div>
                 </div>
                 {
                     showBuyButton && (
-                <Button
-                variant="dark" className="botonCarrito"
-                onClick={() => handleCart(perfume)}><RiShoppingCartLine className='iconoCarrito'></RiShoppingCartLine></Button>
+                        <Button
+                            variant="dark" className="botonCarrito"
+                            onClick={() => handleCart(perfume)}><RiShoppingCartLine className='iconoCarrito'></RiShoppingCartLine></Button>
                     )
                 }
-                
+
             </Card.Body>
         </div>
     )

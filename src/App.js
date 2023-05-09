@@ -31,7 +31,8 @@ function App() {
     usuarios: "",
     conectado: {},
     cart: [],
-    totalPedido:"",
+    totalPedido: 0,
+    setTotalPedido: 0,
   });
   
   return (
@@ -48,8 +49,7 @@ function App() {
           <Route path="/productos" element={<Productos></Productos>}></Route>
           <Route path="/registro" element={<Registro></Registro>}></Route>
           <Route path="/sesion" element={<InicioSesion></InicioSesion>}></Route>
-          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>
-          <Route path="/misfavoritos" element={<FavoritosLog></FavoritosLog>}></Route>         
+          <Route path="/favoritos" element={<Favoritos></Favoritos>}></Route>      
           <Route path="/perfil" element={<Perfil></Perfil>}></Route>
           <Route path="/datos" element={<Datos></Datos>}></Route>
           <Route path="/publicaciones" element={<Publicaciones></Publicaciones>}></Route>

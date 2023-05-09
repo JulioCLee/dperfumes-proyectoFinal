@@ -63,7 +63,7 @@ const NavBarra = () => {
                                 <NavLink className={setActiveClass}
                                     to="/sesion">Iniciar sesión</NavLink>
                                 <NavLink className="lst"
-                                    to="/carrito">🛒{formatter.format(value)}</NavLink>
+                                    to="/carrito">🛒{formatter.format(totalPedido)}</NavLink>
                             </Nav>
                     }
                 </div>
