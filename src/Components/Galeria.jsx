@@ -32,9 +32,6 @@ const Galeria = ({ fav = false }) => {
 
     return (
         <div className="main">
-            <div>
-
-
                 <Row className="cardRow">
                     {pagination()
                         .filter((perfume) => {
@@ -64,7 +61,6 @@ const Galeria = ({ fav = false }) => {
                             );
                         })}
                 </Row>
-            </div>
             <div>
                 <ReactPaginate className='pPagination'
                     previousLabel={'Anterior'}
