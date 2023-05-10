@@ -31,8 +31,7 @@ function App() {
     usuarios: "",
     conectado: {},
     cart: [],
-    totalPedido: 0,
-    setTotalPedido: 0,
+    totalPedidosActual: 0,
   });
   
   return (

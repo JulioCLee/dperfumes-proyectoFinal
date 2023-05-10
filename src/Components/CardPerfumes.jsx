@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../Contexts/MyContext';
 import { BsHeart } from 'react-icons/bs';
 import { useState } from 'react';
+import { calculaTotalPedido } from '../utils/utils';
 
 
 const CardPerfumes = ({ perfume }) => {
@@ -35,20 +36,22 @@ const CardPerfumes = ({ perfume }) => {
             IMG: perfume.IMG,
             PRECIO: perfume.PRECIO,
             MARCA: perfume.MARCA,
-          };
-      
-          const idx = cart.find((p) => p.SKU === perfume.SKU);
-      
-          if (idx) {
+        };
+
+        const idx = cart.find((p) => p.SKU === perfume.SKU);
+
+        if (idx) {
             cart.filter((cartItem) =>
-              cartItem.SKU === perfume.SKU
-                ? { ...cartItem, cant: cartItem.cant++ }
-                : cartItem
+                cartItem.SKU === perfume.SKU
+                    ? { ...cartItem, cant: cartItem.cant++ }
+                    : cartItem
             );
-          } else {
-            setStore({ ...store, cart: [...cart,perfumeSeleccionado] });
-          }
+        } else {
+            setStore({ ...store, cart: [...cart, perfumeSeleccionado] });
+        }
+
     }
+    
 
 
     const noValido = () => {

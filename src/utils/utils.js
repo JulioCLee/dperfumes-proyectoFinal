@@ -7,4 +7,4 @@ const calculaTotalPedido = (cart) =>{
     return total;
 }
 
-export { calculaTotalPedido} 
+export {calculaTotalPedido} 

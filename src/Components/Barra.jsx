@@ -6,8 +6,8 @@ import { useStore } from '../Contexts/MyContext';
 const Barra = () => {
 
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
-    const { store, setStore } = useStore()
-    const { perfumes, sortCritieria, conectado } = store
+    const { store} = useStore()
+    const { perfumes, conectado } = store
     const navigate = useNavigate();
 
     const handleFilter = (p) => {

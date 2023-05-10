@@ -1,11 +1,12 @@
 import { useStore } from '../Contexts/MyContext'
 import React from 'react'
 import { Button } from 'react-bootstrap';
+import { calculaTotalPedido } from '../utils/utils';
 
 const Carrito = () => {
 
   const { store, setStore } = useStore()
-  const { cart, totalPedido, setTotalPedido } = store
+  const { cart, totalPedidosActual} = store
 
 
   const disminuirCantidad = (SKU) => {
@@ -20,6 +21,9 @@ const Carrito = () => {
       }
       setStore({ ...store, cart });
     }
+    const totalPedidosActual = calculaTotalPedido(cart);
+    setStore({ ...store, totalPedidosActual });
+
   }
 
   const aumentarCantidad = (SKU) => {
@@ -28,23 +32,14 @@ const Carrito = () => {
       cart[idx].cant += 1;
       setStore({ ...store, cart });
     }
-
+    const totalPedidosActual = calculaTotalPedido(cart);
+    setStore({ ...store, totalPedidosActual });
   }
-
-
-  const calcularTotal = () => {
-    let total = cart.reduce((acc, cur) => {
-      return acc + cur.PRECIO;
-    }, 0);
-    return total;
-  }
-
-  let total = calcularTotal();
 
 
   return (
     <div>
-      {
+      {        
         <div className='boxCarrito'>
           <h2>Detalle del Pedido</h2>
           <div>
@@ -63,7 +58,7 @@ const Carrito = () => {
                       <div className='precioCantidad'>
                         <div className='pe-5' >
                           <h4>Sub-total</h4>
-                          <span> ${perfume.PRECIO * perfume.cant}</span>
+                          <span> ${(perfume.PRECIO * perfume.cant).toLocaleString("en")}</span>
                         </div>
                       </div>
                       <div>
@@ -78,7 +73,7 @@ const Carrito = () => {
                   </div>)
               })
             }
-            <strong className='totalP'>Total pedido: ${total}</strong>
+            <strong className='totalP'>Total pedido: ${totalPedidosActual.toLocaleString("en")}</strong>
           </div>
         </div>
       }
