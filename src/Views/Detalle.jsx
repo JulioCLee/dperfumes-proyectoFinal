@@ -38,6 +38,9 @@ const Detalle = () => {
 
     }
 
+    const oferta = Math.floor(perfume.PRECIO / 6);
+    const pNormal = Math.floor(perfume.PRECIO * 2);
+
     return (
         <div className='detalle'>
             <div className='imgDetalle'>
@@ -46,7 +49,7 @@ const Detalle = () => {
             <div className='descDetalle'>
                 <h2>{perfume.TITULO}</h2>
                 <hr className='hr2' />
-                <p className='prcDetalle'>${perfume.PRECIO.toLocaleString("en")}</p>
+            
                 <div className='productDetalle'>
                     <h4>Detalles:</h4>
                     <p><span>SKU: </span>{SKU}</p>
@@ -57,6 +60,12 @@ const Detalle = () => {
                 <div>
                     <span>Descripcion:</span>
                     <p className='desc'>{perfume.DESC}</p>
+                </div>
+
+                <div className='detallePrecio'>
+                <del><span style={{ color: "grey", marginRight: "6px", fontSize: "16px" }}>${pNormal.toLocaleString("en")}</span></del>
+                <span className='prcDetalle2'>${perfume.PRECIO.toLocaleString("en")}</span>
+                <span className='pInteres'>6 x ${oferta.toLocaleString("en")} sin interés</span>
                 </div>
 
                 <div className='footerDetalle'>
