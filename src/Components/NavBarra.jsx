@@ -12,7 +12,6 @@ const NavBarra = () => {
     const { conectado, searchTerms, totalPedidosActual } = store;   
     const setActiveClass = ({ isActive }) => (isActive ? "viewActiva" : "view");
 
-
     const handleSearch = (e) => {
         let a = e.target.value;
         setStore({ ...store, searchTerms: a })
@@ -47,7 +46,7 @@ const NavBarra = () => {
                                     <Dropdown.Item><li onClick={cerrarApp} >Cerrar sesión</li></Dropdown.Item>
                                 </Dropdown.Menu>
                                 <NavLink className="lst"
-                                    to="/carrito"><RiShoppingCartLine className='fs-5 ms-2'></RiShoppingCartLine></NavLink>
+                                    to="/carrito"><RiShoppingCartLine className='fs-5'></RiShoppingCartLine><span>${totalPedidosActual.toLocaleString("en")}</span></NavLink>
                             </Dropdown>
                             :
                             <Nav>
@@ -55,8 +54,8 @@ const NavBarra = () => {
                                     to="/registro">Registro </NavLink>
                                 <NavLink className={setActiveClass}
                                     to="/sesion">Iniciar sesión</NavLink>
-                                <NavLink className="lst"
-                                    to="/carrito">🛒{totalPedidosActual.toLocaleString("en")}</NavLink>
+                                <NavLink className="lst" style={{display:"flex", alignItems:"center"}}
+                                    to="/carrito"><RiShoppingCartLine className='fs-5'></RiShoppingCartLine><span>${totalPedidosActual.toLocaleString("en")}</span></NavLink>
                             </Nav>
                     }
                 </div>

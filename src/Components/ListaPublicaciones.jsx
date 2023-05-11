@@ -14,10 +14,7 @@ const ListaPublicaciones = ({ perfume, setBtnEliminar }) => {
         navigate(`/detalle/${sku}`);
     }
 
-    // const btnEliminar= (SKU) => {
-    //     return perfumes.filter((item) => item.SKU !== SKU)
-    // }
-
+    
     return (
         <div className='boxPub'>
             <table style={{margin:"4px"}}>

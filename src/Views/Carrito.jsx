@@ -2,12 +2,14 @@ import { useStore } from '../Contexts/MyContext'
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import { calculaTotalPedido } from '../utils/utils';
+import { NavLink } from 'react-router-dom';
+import { BsArrowLeftShort } from 'react-icons/bs';
+
 
 const Carrito = () => {
 
   const { store, setStore } = useStore()
-  const { cart, totalPedidosActual} = store
-
+  const { cart, totalPedidosActual } = store
 
   const disminuirCantidad = (SKU) => {
     const idx = cart.findIndex((p) => p.SKU === SKU);
@@ -36,9 +38,12 @@ const Carrito = () => {
     setStore({ ...store, totalPedidosActual });
   }
 
+
+
+
   return (
     <div>
-      {        
+      {
         <div className='boxCarrito'>
           <h2>Detalle del Pedido</h2>
           <div>
@@ -47,12 +52,10 @@ const Carrito = () => {
                 return (
                   <div key={i} >
                     <div className='detallePedido'>
+                      <img src={perfume.IMG} alt="img" style={{ borderRight: "1px solid #cececece" }} />
                       <div className='tittle'>
                         <h4>Producto</h4>
-                        <div className='boxCaja'>
-                          <img src={perfume.IMG} alt="img" />
-                          <span>{perfume.MARCA}</span>
-                        </div>
+                        <span style={{ fontSize: "16px", width: "400px" }}>{perfume.TITULO}</span>
                       </div>
                       <div className='precioCantidad'>
                         <div className='pe-5' >
@@ -60,10 +63,10 @@ const Carrito = () => {
                           <span> ${(perfume.PRECIO * perfume.cant).toLocaleString("en")}</span>
                         </div>
                       </div>
-                      <div>
-                        <h4>Cantidad</h4>
-                        <div className='flexButtons'>
-                          <Button className='mx-2 px-3' variant="secondary" onClick={() => disminuirCantidad(perfume.SKU)}>-</Button>
+                      <div className='flexButtons'>
+                        <div >
+                          <h4>Cantidad</h4>
+                          <Button className='m-2 px-3' variant="secondary" onClick={() => disminuirCantidad(perfume.SKU)}>-</Button>
                           <span>{perfume.cant}</span>
                           <Button className='mx-2 px-3' variant="secondary" onClick={() => aumentarCantidad(perfume.SKU)} >+</Button>
                         </div>
@@ -72,7 +75,10 @@ const Carrito = () => {
                   </div>)
               })
             }
-            <strong className='totalP'>Total pedido: ${totalPedidosActual.toLocaleString("en")}</strong>
+            <div className='footerCarrito'>
+              <strong className='totalP'>Total pedido: ${totalPedidosActual.toLocaleString("en")}</strong>
+              <NavLink to="/productos" style={{ textDecoration: "none", color: "black", }}> <BsArrowLeftShort></BsArrowLeftShort> Continuar Comprando</NavLink>
+            </div>
           </div>
         </div>
       }

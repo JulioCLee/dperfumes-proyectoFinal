@@ -8,19 +8,17 @@ import ReactPaginate from 'react-paginate';
 const Galeria = ({ fav = false }) => {
     const { store } = useStore();
     const { perfumes, searchTerms } = store;
-    const { name, genero } = useParams();
+    const { name } = useParams();
     const pathname = window.location.pathname;
     const [currentPage, setCurrentPage] = useState(0);
 
     const sortBy = () => {
         let result;
-        if (pathname?.includes('/marca/') && name) {
-            result = name;
-        } else if (pathname?.includes('/genero/') && genero) {
-            result = genero;
-        }
-        return result;
-    };
+        if (pathname?.includes('/marca/')) {
+          result = name;
+        } 
+        return result || '';
+      };
 
     const pagination = () => {
         return perfumes.slice(currentPage * 16, (currentPage + 1) * 16);
@@ -47,9 +45,7 @@ const Galeria = ({ fav = false }) => {
                         .filter((perfume) => {
                             if (sortBy()) {
                                 return perfume.MARCA === sortBy();
-                            } else if (genero) {
-                                return perfume.GENERO === sortBy();
-                            } else {
+                            }  else {
                                 return perfume;
                             }
                         })

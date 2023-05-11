@@ -22,19 +22,12 @@ const Barra = () => {
         return p.MARCA;
     })
 
-    const generoPerfumes = perfumes.map((p) => {
-        return p.GENERO;
-    })
     
     //marcas//
     const marcas = new Set(marcasPerfumes);
 
     const marcasUnicas = [...marcas];
 
-    // genero //
-    const genero = new Set(generoPerfumes);
-
-    const generoUnicas = [...genero];
 
     return (
         <div className='barra'>
@@ -60,18 +53,6 @@ const Barra = () => {
                             {
                                 marcasUnicas.map((p, k) => {
                                     return <Dropdown.Item onClick={() => handleFilter(p)} key={`${p}-${k}`}>{p}</Dropdown.Item>
-                                })
-                            }
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown className='lstNav'>
-                        <Dropdown.Toggle variant="link" style={{ color: "black", textDecoration: "none" }} id="dropdown-basic">
-                            Genero
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {
-                                generoUnicas.map((p, a) => {
-                                    return <Dropdown.Item onClick={() => handleFilterDos(p)} key={`${p}-${a}`}>{p}</Dropdown.Item>
                                 })
                             }
                         </Dropdown.Menu>

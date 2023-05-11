@@ -35,6 +35,7 @@ const CardPerfumes = ({ perfume }) => {
             IMG: perfume.IMG,
             PRECIO: perfume.PRECIO,
             MARCA: perfume.MARCA,
+            TITULO: perfume.TITULO
         };
 
         const idx = cart.find((p) => p.SKU === perfume.SKU);

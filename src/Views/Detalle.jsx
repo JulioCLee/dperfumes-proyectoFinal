@@ -8,11 +8,35 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 
 
 const Detalle = () => {
-    const { store } = useStore()
-    const { perfumes } = store;
+    const { store, setStore } = useStore()
+    const { perfumes, cart } = store;
     const { SKU } = useParams();
 
     const perfume = perfumes.find((p) => p.SKU === SKU);
+
+    const handleCart = (perfume) => {
+        const perfumeSeleccionado = {
+            SKU: perfume.SKU,
+            cant: 1,
+            IMG: perfume.IMG,
+            PRECIO: perfume.PRECIO,
+            MARCA: perfume.MARCA,
+            TITULO: perfume.TITULO
+        };
+
+        const idx = cart.find((p) => p.SKU === perfume.SKU);
+
+        if (idx) {
+            cart.filter((cartItem) =>
+                cartItem.SKU === perfume.SKU
+                    ? { ...cartItem, cant: cartItem.cant++ }
+                    : cartItem
+            );
+        } else {
+            setStore({ ...store, cart: [...cart, perfumeSeleccionado] });
+        }
+
+    }
 
     return (
         <div className='detalle'>
@@ -36,7 +60,7 @@ const Detalle = () => {
                 </div>
 
                 <div className='footerDetalle'>
-                    <Button variant="dark">Añadir al carrito</Button>
+                    <Button variant="dark"  onClick={() => handleCart(perfume)} >Añadir al carrito</Button>
                     <NavLink to="/productos" style={{ textDecoration: "none", color: "black", }}> <BsArrowLeftShort></BsArrowLeftShort> Continuar Comprando</NavLink>
                 </div>
             </div>

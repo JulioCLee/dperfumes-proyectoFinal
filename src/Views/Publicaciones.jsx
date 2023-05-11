@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import NoValido from './NoValido';
 
 const Publicaciones = () => {
-    const { store } = useStore()
+    const { store, setStore } = useStore()
     const [btnEliminar, setBtnEliminar] = useState('')
     const { perfumes, conectado } = store
     const [pageNumber, setPageNumber] = useState(0);
@@ -27,10 +27,10 @@ const Publicaciones = () => {
 
     const btnDelete = (SKU) => {
         const newPerfumes = [...perfumes];
-       const index = newPerfumes.findIndex((item) => item.SKU === SKU)
-       newPerfumes.splice(index, 1)
-
-    }
+        const index = newPerfumes.findIndex((item) => item.SKU === SKU);
+        newPerfumes.splice(index, 1);
+        setStore((prevState) => ({ ...prevState, perfumes: newPerfumes }));
+      };
 
 
     useEffect(() => {
