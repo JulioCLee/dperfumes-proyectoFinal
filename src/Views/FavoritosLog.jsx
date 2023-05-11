@@ -2,6 +2,7 @@
 import { useStore } from "../Contexts/MyContext";
 import Interface from "./Interface";
 import Galeria from "../Components/Galeria";
+import NoValido from "./NoValido";
 
 export default function Favoritos2({ fav = false }) {
 
@@ -18,7 +19,7 @@ export default function Favoritos2({ fav = false }) {
           <Galeria fav={true}></Galeria>
         </div>
           :
-          null
+          <NoValido></NoValido>
       }
     </div>
   );

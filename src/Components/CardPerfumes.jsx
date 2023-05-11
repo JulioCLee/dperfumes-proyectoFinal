@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../Contexts/MyContext';
 import { BsHeart } from 'react-icons/bs';
 import { useState } from 'react';
-import { calculaTotalPedido } from '../utils/utils';
 
 
 const CardPerfumes = ({ perfume }) => {

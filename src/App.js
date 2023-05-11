@@ -13,12 +13,13 @@ import Footer from './Components/Footer';
 import NavBarra from './Components/NavBarra';
 import Favoritos from './Views/Favoritos';
 import FavoritosLog from './Views/FavoritosLog';
-import AppProvider from './Contexts/MyContext';
+import AppProvider, { useStore } from './Contexts/MyContext';
 import Perfil from './Components/Perfil';
 import NoValido from './Views/NoValido';
 import Datos from './Views/Datos';
 import Publicaciones from './Views/Publicaciones';
 import CrearP from './Views/CrearP';
+import CartPriv from './Views/CartPriv';
 
 
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/datos" element={<Datos></Datos>}></Route>
           <Route path="/publicaciones" element={<Publicaciones></Publicaciones>}></Route>
           <Route path="/crear-publicacion" element={<CrearP></CrearP>}></Route>
+          <Route path="/cartprivado" element={<CartPriv></CartPriv>}></Route>
           <Route path="*" element={<NoValido></NoValido>}></Route>
         </Routes>
       </BrowserRouter>

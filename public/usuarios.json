@@ -1,7 +1,7 @@
 [
     {
-      "nombre": "admin",
-      "apellido": "admin",
+      "nombre": "Admin",
+      "apellido": "Admin",
       "email": "admin@gmail.com",
       "clave": "123456789",
       "comuna": "Santiago",

@@ -36,7 +36,6 @@ const Carrito = () => {
     setStore({ ...store, totalPedidosActual });
   }
 
-
   return (
     <div>
       {        

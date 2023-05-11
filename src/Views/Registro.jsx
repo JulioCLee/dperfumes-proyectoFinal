@@ -20,16 +20,6 @@ const Registro = () => {
     const { usuarios } = store
     const [validated, setValidated] = useState(false);
     
-    // const RegistrarseUsuarios = () =>{
-    //     const usuarioValido = usuarios.push({nombre: nombre, email: email, clave: contraseña, apellido: apellido, telefono: telefono, comuna: comuna});
-
-    //     if (usuarioValido) {
-    //         setStore({ ...store, conectado: { estado: true, correo: email, nombre: nombre, clave: contraseña, apellido: apellido, telefono: telefono, comuna: comuna } })
-    //         console.log(store);
-    //         navigate(`/`)
-    //     }
-    // }    
-    // console.log(store);
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -41,7 +31,6 @@ const Registro = () => {
             const usuarioValido = usuarios.push({nombre: nombre, email: email, clave: contraseña, apellido: apellido, telefono: telefono, comuna: comuna});
             if (usuarioValido) {
                 setStore({ ...store, conectado: { estado: true, correo: email, nombre: nombre, clave: contraseña, apellido: apellido, telefono: telefono, comuna: comuna } })
-                console.log(store);
                 navigate(`/`)
             }
         }

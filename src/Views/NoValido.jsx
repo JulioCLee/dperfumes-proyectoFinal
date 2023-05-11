@@ -8,10 +8,11 @@ import { NavLink } from 'react-router-dom';
 const NoValido = () => {
   return (
     <div className='noValidoLogo'>
-        <img src={logo2} style={{width:"340px"}} alt="logo" />
+      <div>
         <img src={novalido} style={{width:"700px"}} alt="novalido" />
         <div>
         <Button variant='dark'><NavLink style={{color:"white", textDecoration:"none"}} to="/">Ir a Ofertas</NavLink></Button>
+        </div>
         </div>
     </div>
   )
